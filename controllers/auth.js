@@ -31,6 +31,7 @@ const authSuccessResponse = (res, user) => {
 			posts: user.posts,
 			followers: user.followers,
 			following: user.following,
+			profilePhoto: user.profilePhoto,
 		},
 	});
 };
