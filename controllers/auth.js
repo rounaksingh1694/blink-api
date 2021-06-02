@@ -51,7 +51,7 @@ exports.signUp = (req, res) => {
 	user.save((error, user) => {
 		if (error || !user) {
 			console.error("ERROR SIGN UP", error);
-			return getErrorMesaageInJson(res, 400, "Cannot save user in database");
+			return getErrorMesaageInJson(res, 400, "This username already exists.");
 		}
 		return authSuccessResponse(res, user);
 	});
