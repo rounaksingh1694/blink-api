@@ -13,11 +13,14 @@ const {
 	getUser,
 	getUserProfilePhoto,
 	getAllUsers,
+	getUserDetails,
 } = require("../controllers/user");
 
 router.param("userId", getUserById);
 
 router.get("/:userId", isSignedIn, isAuthenticated, getUser);
+
+router.get("/", isSignedIn, getUserDetails);
 
 router.get(
 	"/profilePhoto/:userId",

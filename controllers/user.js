@@ -11,7 +11,6 @@ const {
 	USER_FIELDS_TO_POPULATE,
 	getPostById,
 } = require("../controllers/base");
-const user = require("../models/user");
 
 exports.getUser = (req, res) => {
 	const { _id, username, name, posts, followers, following, profilePhoto } =
@@ -27,6 +26,36 @@ exports.getUser = (req, res) => {
 			profilePhoto,
 		},
 	});
+};
+
+exports.getUserDetails = (req, res) => {
+	User.findOne({ _id: req.auth._id })
+		.populate("followers", FOLLOW_FIELDS_TO_POPULATE)
+		.populate("following", FOLLOW_FIELDS_TO_POPULATE)
+		.populate("posts")
+		.exec((error, user) => {
+			if (!user) {
+				getErrorMesaageInJson(res, 400, "No user present");
+			}
+			if (error) {
+				getErrorMesaageInJson(res, 400, "Cannot get user.");
+			}
+
+			const { _id, username, name, posts, followers, following, profilePhoto } =
+				user;
+
+			sendResponse(res, {
+				user: {
+					_id,
+					username,
+					name,
+					posts,
+					followers,
+					following,
+					profilePhoto,
+				},
+			});
+		});
 };
 
 exports.getUserProfilePhoto = (req, res) => {
