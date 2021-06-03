@@ -71,11 +71,11 @@ exports.signIn = (req, res) => {
 
 	User.findOne({ username }, (error, user) => {
 		if (error || !user) {
-			return getErrorMesaageInJson(req, 400, "User does not exist");
+			return getErrorMesaageInJson(res, 400, "User does not exist");
 		}
 
 		if (!user.authenticate(password)) {
-			return getErrorMesaageInJson(req, 400, "Email & password don't match");
+			return getErrorMesaageInJson(res, 400, "Email & password don't match");
 		}
 
 		user
