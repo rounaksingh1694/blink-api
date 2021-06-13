@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const expressJwt = require("express-jwt");
 require("dotenv").config();
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./blink_swagger_docs.json");
 
 const authRoutes = require("./routes/auth");
 const followRoutes = require("./routes/follow");
@@ -41,3 +43,6 @@ app.use("/api/follow", followRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/comment", commentRoutes);
+
+// Docs
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

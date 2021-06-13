@@ -1,0 +1,408 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0",
+		"title": "Blink",
+		"contact": {}
+	},
+	"host": "localhost:8000",
+	"basePath": "/api",
+	"securityDefinitions": {},
+	"schemes": ["http"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+	"paths": {
+		"/auth/signup": {
+			"post": {
+				"summary": "signup",
+				"tags": ["Misc"],
+				"operationId": "signup",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/signuprequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/follow/follow/:userId": {
+			"post": {
+				"summary": "follow",
+				"tags": ["Misc"],
+				"operationId": "follow",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/followrequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/auth/signin": {
+			"get": {
+				"summary": "signin",
+				"tags": ["Misc"],
+				"operationId": "signin",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/follow/following/all/:userId": {
+			"get": {
+				"summary": "getAllFollowers",
+				"tags": ["Misc"],
+				"operationId": "getAllFollowers",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/create/:userId": {
+			"post": {
+				"summary": "createPost",
+				"tags": ["Misc"],
+				"operationId": "createPost",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/createPostRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/like/:postId/:userId": {
+			"get": {
+				"summary": "likePost",
+				"tags": ["Misc"],
+				"operationId": "likePost",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/comment/create/:postId/:userId": {
+			"post": {
+				"summary": "createComment",
+				"tags": ["Misc"],
+				"operationId": "createComment",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/createCommentRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/comment/delete/:postId/:commentId/:userId": {
+			"delete": {
+				"summary": "deleteComment",
+				"tags": ["Misc"],
+				"operationId": "deleteComment",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/comment/all/:postId/:userId": {
+			"get": {
+				"summary": "getAllComments",
+				"tags": ["Misc"],
+				"operationId": "getAllComments",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/all/:userId": {
+			"get": {
+				"summary": "getAllUsers",
+				"tags": ["Misc"],
+				"operationId": "getAllUsers",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/feed/:userId": {
+			"get": {
+				"summary": "getPostsByUserFollowing",
+				"tags": ["Misc"],
+				"operationId": "getPostsByUserFollowing",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"signuprequest": {
+			"title": "signuprequest",
+			"example": {
+				"name": "User 2",
+				"username": "user2",
+				"password": "user2"
+			},
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"required": ["name", "username", "password"]
+		},
+		"followrequest": {
+			"title": "followrequest",
+			"example": {
+				"userToFollow": {
+					"_id": "60b21852077aa34768628152",
+					"username": "user2"
+				}
+			},
+			"type": "object",
+			"properties": {
+				"userToFollow": {
+					"$ref": "#/definitions/UserToFollow"
+				}
+			},
+			"required": ["userToFollow"]
+		},
+		"UserToFollow": {
+			"title": "UserToFollow",
+			"example": {
+				"_id": "60b21852077aa34768628152",
+				"username": "user2"
+			},
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"required": ["_id", "username"]
+		},
+		"createPostRequest": {
+			"title": "createPostRequest",
+			"example": {
+				"postUrl": "post1",
+				"description": "desc1"
+			},
+			"type": "object",
+			"properties": {
+				"postUrl": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			},
+			"required": ["postUrl", "description"]
+		},
+		"createCommentRequest": {
+			"title": "createCommentRequest",
+			"example": {
+				"comment": "Comment 1 on Post 1"
+			},
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string"
+				}
+			},
+			"required": ["comment"]
+		}
+	},
+	"tags": [
+		{
+			"name": "Misc",
+			"description": ""
+		}
+	]
+}
