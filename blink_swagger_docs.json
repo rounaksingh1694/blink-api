@@ -1,21 +1,21 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"version": "1.0",
-		"title": "Blink",
+		"version": "1.4",
+		"title": "Blink API",
 		"contact": {}
 	},
 	"host": "blink-backend.herokuapp.com",
 	"basePath": "/api",
 	"securityDefinitions": {},
-	"schemes": ["https", "http"],
+	"schemes": ["https"],
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 	"paths": {
 		"/auth/signup": {
 			"post": {
 				"summary": "signup",
-				"tags": ["Misc"],
+				"tags": ["Documentation"],
 				"operationId": "signup",
 				"deprecated": false,
 				"produces": ["application/json"],
