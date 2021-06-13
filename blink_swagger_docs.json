@@ -226,6 +226,30 @@
 				}
 			}
 		},
+		"/post/feed/:userId": {
+			"get": {
+				"summary": "getPostsByUserFollowing",
+				"tags": ["Post"],
+				"operationId": "getPostsByUserFollowing",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
 		"/comment/create/:postId/:userId": {
 			"post": {
 				"summary": "createComment",
@@ -307,9 +331,9 @@
 				}
 			}
 		},
-		"/user/all/:userId": {
+		"/user/:userId": {
 			"get": {
-				"summary": "getAllUsers",
+				"summary": "getUser",
 				"tags": ["User"],
 				"operationId": "getAllUsers",
 				"deprecated": false,
@@ -331,11 +355,35 @@
 				}
 			}
 		},
-		"/post/feed/:userId": {
+		"/user/profilePhoto/:userId": {
 			"get": {
-				"summary": "getPostsByUserFollowing",
-				"tags": ["Post"],
-				"operationId": "getPostsByUserFollowing",
+				"summary": "getUserProfilePhoto",
+				"tags": ["User"],
+				"operationId": "getAllUsers",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/all/:userId": {
+			"get": {
+				"summary": "getAllUsers",
+				"tags": ["User"],
+				"operationId": "getAllUsers",
 				"deprecated": false,
 				"produces": ["application/json"],
 				"parameters": [
@@ -462,11 +510,5 @@
 			},
 			"required": ["comment"]
 		}
-	},
-	"tags": [
-		{
-			"name": "Documentation",
-			"description": ""
-		}
-	]
+	}
 }
