@@ -5,10 +5,10 @@
 		"title": "Blink",
 		"contact": {}
 	},
-	"host": "localhost:8000",
+	"host": "blink-backend.herokuapp.com",
 	"basePath": "/api",
 	"securityDefinitions": {},
-	"schemes": ["http"],
+	"schemes": ["https", "http"],
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 	"paths": {
@@ -21,13 +21,6 @@
 				"produces": ["application/json"],
 				"parameters": [
 					{
-						"name": "Authorization",
-						"in": "header",
-						"required": false,
-						"default": "Bearer {token}",
-						"type": "string"
-					},
-					{
 						"name": "Body",
 						"in": "body",
 						"required": true,
@@ -35,6 +28,56 @@
 						"schema": {
 							"$ref": "#/definitions/signuprequest"
 						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/auth/signin": {
+			"post": {
+				"summary": "signin",
+				"tags": ["Misc"],
+				"operationId": "signin",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/signinrequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/auth/signout": {
+			"get": {
+				"summary": "signout",
+				"tags": ["Misc"],
+				"operationId": "signout",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -78,11 +121,11 @@
 				}
 			}
 		},
-		"/auth/signin": {
+		"/follow/followers/all/:userId": {
 			"get": {
-				"summary": "signin",
+				"summary": "getAllFollowers",
 				"tags": ["Misc"],
-				"operationId": "signin",
+				"operationId": "getAllFollowers",
 				"deprecated": false,
 				"produces": ["application/json"],
 				"parameters": [
@@ -104,9 +147,9 @@
 		},
 		"/follow/following/all/:userId": {
 			"get": {
-				"summary": "getAllFollowers",
+				"summary": "getAllFollowing",
 				"tags": ["Misc"],
-				"operationId": "getAllFollowers",
+				"operationId": "getAllFollowing",
 				"deprecated": false,
 				"produces": ["application/json"],
 				"parameters": [
@@ -317,9 +360,10 @@
 		"signuprequest": {
 			"title": "signuprequest",
 			"example": {
-				"name": "User 2",
-				"username": "user2",
-				"password": "user2"
+				"name": "string",
+				"username": "string",
+				"password": "string",
+				"profilePhoto": "img url to profile photo"
 			},
 			"type": "object",
 			"properties": {
@@ -331,16 +375,36 @@
 				},
 				"password": {
 					"type": "string"
+				},
+				"profilePhoto": {
+					"type": "string"
 				}
 			},
-			"required": ["name", "username", "password"]
+			"required": ["name", "username", "password", "profilePhoto"]
+		},
+		"signinrequest": {
+			"title": "signuprequest",
+			"example": {
+				"username": "string",
+				"password": "string"
+			},
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"required": ["username", "password"]
 		},
 		"followrequest": {
 			"title": "followrequest",
 			"example": {
 				"userToFollow": {
-					"_id": "60b21852077aa34768628152",
-					"username": "user2"
+					"_id": "string",
+					"username": "string"
 				}
 			},
 			"type": "object",
@@ -354,8 +418,8 @@
 		"UserToFollow": {
 			"title": "UserToFollow",
 			"example": {
-				"_id": "60b21852077aa34768628152",
-				"username": "user2"
+				"_id": "string",
+				"username": "string"
 			},
 			"type": "object",
 			"properties": {
@@ -371,8 +435,8 @@
 		"createPostRequest": {
 			"title": "createPostRequest",
 			"example": {
-				"postUrl": "post1",
-				"description": "desc1"
+				"postUrl": "image url to post image",
+				"description": "cation"
 			},
 			"type": "object",
 			"properties": {
