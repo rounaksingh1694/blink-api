@@ -15,7 +15,7 @@
 		"/auth/signup": {
 			"post": {
 				"summary": "signup",
-				"tags": ["Documentation"],
+				"tags": ["Authentication"],
 				"operationId": "signup",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -41,7 +41,7 @@
 		"/auth/signin": {
 			"post": {
 				"summary": "signin",
-				"tags": ["Documentation"],
+				"tags": ["Authentication"],
 				"operationId": "signin",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -67,7 +67,7 @@
 		"/auth/signout": {
 			"get": {
 				"summary": "signout",
-				"tags": ["Documentation"],
+				"tags": ["Authentication"],
 				"operationId": "signout",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -91,7 +91,7 @@
 		"/follow/follow/:userId": {
 			"post": {
 				"summary": "follow",
-				"tags": ["Documentation"],
+				"tags": ["Follow"],
 				"operationId": "follow",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -124,7 +124,7 @@
 		"/follow/followers/all/:userId": {
 			"get": {
 				"summary": "getAllFollowers",
-				"tags": ["Documentation"],
+				"tags": ["Follow"],
 				"operationId": "getAllFollowers",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -148,7 +148,7 @@
 		"/follow/following/all/:userId": {
 			"get": {
 				"summary": "getAllFollowing",
-				"tags": ["Documentation"],
+				"tags": ["Follow"],
 				"operationId": "getAllFollowing",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -172,7 +172,7 @@
 		"/post/create/:userId": {
 			"post": {
 				"summary": "createPost",
-				"tags": ["Documentation"],
+				"tags": ["Post"],
 				"operationId": "createPost",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -205,7 +205,7 @@
 		"/post/like/:postId/:userId": {
 			"get": {
 				"summary": "likePost",
-				"tags": ["Documentation"],
+				"tags": ["Post"],
 				"operationId": "likePost",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -229,7 +229,7 @@
 		"/comment/create/:postId/:userId": {
 			"post": {
 				"summary": "createComment",
-				"tags": ["Documentation"],
+				"tags": ["Comment"],
 				"operationId": "createComment",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -262,7 +262,7 @@
 		"/comment/delete/:postId/:commentId/:userId": {
 			"delete": {
 				"summary": "deleteComment",
-				"tags": ["Documentation"],
+				"tags": ["Comment"],
 				"operationId": "deleteComment",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -286,7 +286,7 @@
 		"/comment/all/:postId/:userId": {
 			"get": {
 				"summary": "getAllComments",
-				"tags": ["Documentation"],
+				"tags": ["Comment"],
 				"operationId": "getAllComments",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -310,7 +310,7 @@
 		"/user/all/:userId": {
 			"get": {
 				"summary": "getAllUsers",
-				"tags": ["Documentation"],
+				"tags": ["User"],
 				"operationId": "getAllUsers",
 				"deprecated": false,
 				"produces": ["application/json"],
@@ -334,7 +334,7 @@
 		"/post/feed/:userId": {
 			"get": {
 				"summary": "getPostsByUserFollowing",
-				"tags": ["Documentation"],
+				"tags": ["Post"],
 				"operationId": "getPostsByUserFollowing",
 				"deprecated": false,
 				"produces": ["application/json"],
