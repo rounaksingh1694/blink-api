@@ -14,7 +14,7 @@ exports.follow = (req, res) => {
 	const userToFollow = req.body.userToFollow;
 	User.findOneAndUpdate(
 		{ _id: user._id },
-		{ $push: { following: userToFollow._id } },
+		{ $addToSet: { following: userToFollow._id } },
 		{ new: true },
 		(error, newUser) => {
 			if (error || !newUser) {
@@ -22,7 +22,7 @@ exports.follow = (req, res) => {
 			}
 			User.findOneAndUpdate(
 				{ _id: userToFollow._id },
-				{ $push: { followers: user._id } },
+				{ $addToSet: { followers: user._id } },
 				{ new: true },
 				(error, followedUser) => {
 					if (error || !followedUser) {

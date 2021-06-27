@@ -121,6 +121,39 @@
 				}
 			}
 		},
+		"/follow/unfollow/:userId": {
+			"post": {
+				"summary": "unfollow",
+				"tags": ["Follow"],
+				"operationId": "unfollow",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": false,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/unfollowrequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
 		"/follow/followers/all/:userId": {
 			"get": {
 				"summary": "getAllFollowers",
@@ -463,8 +496,41 @@
 			},
 			"required": ["userToFollow"]
 		},
+		"unfollowrequest": {
+			"title": "unfollowrequest",
+			"example": {
+				"userToUnfollow": {
+					"_id": "string",
+					"username": "string"
+				}
+			},
+			"type": "object",
+			"properties": {
+				"userToFollow": {
+					"$ref": "#/definitions/UserToUnfollow"
+				}
+			},
+			"required": ["userToFollow"]
+		},
 		"UserToFollow": {
 			"title": "UserToFollow",
+			"example": {
+				"_id": "string",
+				"username": "string"
+			},
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"required": ["_id", "username"]
+		},
+		"UserToUnfollow": {
+			"title": "UserToUnfollow",
 			"example": {
 				"_id": "string",
 				"username": "string"
