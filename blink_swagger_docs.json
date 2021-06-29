@@ -75,7 +75,7 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
 						"type": "string"
 					}
@@ -88,7 +88,7 @@
 				}
 			}
 		},
-		"/follow/follow/:userId": {
+		"/follow/follow/{userId}": {
 			"post": {
 				"summary": "follow",
 				"tags": ["Follow"],
@@ -99,7 +99,7 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
 						"type": "string"
 					},
@@ -111,6 +111,13 @@
 						"schema": {
 							"$ref": "#/definitions/followrequest"
 						}
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -121,7 +128,7 @@
 				}
 			}
 		},
-		"/follow/unfollow/:userId": {
+		"/follow/unfollow/{userId}": {
 			"post": {
 				"summary": "unfollow",
 				"tags": ["Follow"],
@@ -132,7 +139,7 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
 						"type": "string"
 					},
@@ -144,6 +151,13 @@
 						"schema": {
 							"$ref": "#/definitions/unfollowrequest"
 						}
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -154,7 +168,7 @@
 				}
 			}
 		},
-		"/follow/followers/all/:userId": {
+		"/follow/followers/all/{userId}": {
 			"get": {
 				"summary": "getAllFollowers",
 				"tags": ["Follow"],
@@ -165,8 +179,15 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -178,7 +199,7 @@
 				}
 			}
 		},
-		"/follow/following/all/:userId": {
+		"/follow/following/all/{userId}": {
 			"get": {
 				"summary": "getAllFollowing",
 				"tags": ["Follow"],
@@ -189,8 +210,15 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -202,7 +230,7 @@
 				}
 			}
 		},
-		"/post/create/:userId": {
+		"/post/create/{userId}": {
 			"post": {
 				"summary": "createPost",
 				"tags": ["Post"],
@@ -213,7 +241,7 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
 						"type": "string"
 					},
@@ -225,6 +253,13 @@
 						"schema": {
 							"$ref": "#/definitions/createPostRequest"
 						}
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -235,7 +270,7 @@
 				}
 			}
 		},
-		"/post/like/:postId/:userId": {
+		"/post/like/{postId}/{userId}": {
 			"get": {
 				"summary": "likePost",
 				"tags": ["Post"],
@@ -246,8 +281,15 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -259,7 +301,7 @@
 				}
 			}
 		},
-		"/post/feed/:userId": {
+		"/post/feed/{userId}": {
 			"get": {
 				"summary": "getPostsByUserFollowing",
 				"tags": ["Post"],
@@ -270,8 +312,15 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -283,7 +332,7 @@
 				}
 			}
 		},
-		"/comment/create/:postId/:userId": {
+		"/comment/create/{postId}/{userId}": {
 			"post": {
 				"summary": "createComment",
 				"tags": ["Comment"],
@@ -294,7 +343,7 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
 						"type": "string"
 					},
@@ -306,6 +355,20 @@
 						"schema": {
 							"$ref": "#/definitions/createCommentRequest"
 						}
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -316,7 +379,7 @@
 				}
 			}
 		},
-		"/comment/delete/:postId/:commentId/:userId": {
+		"/comment/delete/{postId}/{commentId}/{userId}": {
 			"delete": {
 				"summary": "deleteComment",
 				"tags": ["Comment"],
@@ -327,8 +390,29 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "commentId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -340,7 +424,7 @@
 				}
 			}
 		},
-		"/comment/all/:postId/:userId": {
+		"/comment/all/{postId}/{userId}": {
 			"get": {
 				"summary": "getAllComments",
 				"tags": ["Comment"],
@@ -351,8 +435,22 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -364,7 +462,7 @@
 				}
 			}
 		},
-		"/user/:userId": {
+		"/user/{userId}": {
 			"get": {
 				"summary": "getUser",
 				"tags": ["User"],
@@ -375,8 +473,15 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -388,7 +493,7 @@
 				}
 			}
 		},
-		"/user/profilePhoto/:userId": {
+		"/user/profilePhoto/{userId}": {
 			"get": {
 				"summary": "getUserProfilePhoto",
 				"tags": ["User"],
@@ -399,8 +504,15 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],
@@ -412,7 +524,7 @@
 				}
 			}
 		},
-		"/user/all/:userId": {
+		"/user/all/{userId}": {
 			"get": {
 				"summary": "getAllUsers",
 				"tags": ["User"],
@@ -423,8 +535,77 @@
 					{
 						"name": "Authorization",
 						"in": "header",
-						"required": false,
+						"required": true,
 						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/explore/posts/{userId}": {
+			"get": {
+				"summary": "getPostsForExplore",
+				"tags": ["Explore"],
+				"operationId": "getPostsForExplore",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/explore/users/{userId}": {
+			"get": {
+				"summary": "getUsersForExplore",
+				"tags": ["Explore"],
+				"operationId": "getUsersForExplore",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
 						"type": "string"
 					}
 				],

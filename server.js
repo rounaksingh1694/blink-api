@@ -11,6 +11,7 @@ const followRoutes = require("./routes/follow");
 const postRoutes = require("./routes/post");
 const userRoutes = require("./routes/user");
 const commentRoutes = require("./routes/comment");
+const exploreRoutes = require("./routes/explore");
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use("/api/follow", followRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/comment", commentRoutes);
+app.use("/api/explore", exploreRoutes);
 
 // Docs
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

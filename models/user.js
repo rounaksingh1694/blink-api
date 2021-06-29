@@ -43,6 +43,14 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		bio: {
+			type: String,
+			maxLength: 160,
+			trim: true,
+		},
+		coverPhoto: {
+			type: String,
+		},
 	},
 	{ timestamps: true }
 );
@@ -59,6 +67,10 @@ userSchema
 	.get(function () {
 		return this._password;
 	});
+
+userSchema.virtual("postCount").get(function () {
+	return this.posts.length;
+});
 
 userSchema.methods = {
 	authenticate: function (password) {

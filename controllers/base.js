@@ -95,5 +95,7 @@ exports.getCommentById = (req, res, next, commentId) => {
 
 // Constant variables
 exports.FOLLOW_FIELDS_TO_POPULATE = "_id username name profilePhoto";
-exports.USER_FIELDS_TO_POPULATE = "_id username name profilePhoto";
-// exports.POST_FIELDS_TO_POPULATE = "";
+exports.USER_FIELDS_TO_POPULATE =
+	"_id username name profilePhoto followers following bio coverPhoto";
+exports.EXPLORE_USERS_FIELDS_TO_POPULATE =
+	"_id username name profilePhoto followers postCount";

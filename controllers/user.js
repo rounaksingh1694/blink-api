@@ -68,6 +68,7 @@ exports.getUserProfilePhoto = (req, res) => {
 exports.getAllUsers = (req, res) => {
 	User.find()
 		.populate("posts")
+		.select(USER_FIELDS_TO_POPULATE)
 		.exec((error, users) => {
 			if (error)
 				return getErrorMesaageInJson(res, 400, "Error in getting all users");
